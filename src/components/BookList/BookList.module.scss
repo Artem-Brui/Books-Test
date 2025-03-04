@@ -1,0 +1,25 @@
+.table__container {
+  height: 100%;
+
+  thead {
+    tr {
+      background-color: #cbc3c1;
+    }
+    
+    td {
+      font-size: 14px;
+      text-transform: uppercase;
+      font-weight: 600;
+      text-align: center;
+      padding-block: 10px;
+    }
+  }
+
+  tbody {
+    td {
+      border-bottom: 1px solid grey;
+      padding: 5px 5px;
+      text-align: center;
+    }
+  }
+}

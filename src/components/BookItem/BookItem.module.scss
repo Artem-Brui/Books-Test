@@ -1,0 +1,59 @@
+.title {
+  width: 150px;
+}
+
+.category {
+  width: 150px;
+}
+
+.createdAt,
+.editedAt {
+  width: 110px;
+  font-size: 13px;
+}
+
+.actions {
+  width: 90px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+
+  button {
+    width: 100%;
+    font-size: 10px;
+    padding: 3px 2px;
+    text-transform: uppercase;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: inset 1px 1px 5px white, inset -1px -1px 5px white;
+
+    &:hover {
+      filter: contrast(0.9);
+    }
+  }
+}
+
+.deactivated {
+  background-color: rgb(207, 172, 172);
+  color: rgb(134, 51, 51);
+}
+
+.edit_button {
+  background-color: rgb(252, 220, 125);
+}
+
+.delete_button {
+  background-color: rgb(175, 60, 60);
+  color: white;
+}
+
+.activate_button {
+  background-color: rgb(73, 175, 60);
+  color: white;
+}
+
+.deactivate_button {
+  background-color: rgb(156, 143, 143);
+  color: white;
+}
+
