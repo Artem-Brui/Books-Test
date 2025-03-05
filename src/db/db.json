@@ -18,7 +18,7 @@
       "isbn": "978-0060850524",
       "createdAt": "4 March 2025, 8:35PM",
       "editedAt": "-",
-      "isActive": true
+      "isActive": false
     },
     {
       "id": "3",
@@ -38,7 +38,7 @@
       "isbn": "978-0385490818",
       "createdAt": "4 March 2025, 8:35PM",
       "editedAt": "-",
-      "isActive": true
+      "isActive": false
     },
     {
       "id": "5",
@@ -48,7 +48,7 @@
       "isbn": "978-0061120084",
       "createdAt": "4 March 2025, 8:35PM",
       "editedAt": "-",
-      "isActive": true
+      "isActive": false
     },
     {
       "id": "6",
@@ -68,7 +68,7 @@
       "isbn": "978-1503290563",
       "createdAt": "4 March 2025, 8:35PM",
       "editedAt": "-",
-      "isActive": true
+      "isActive": false
     },
     {
       "id": "8",
@@ -88,7 +88,7 @@
       "isbn": "978-0547928227",
       "createdAt": "4 March 2025, 8:35PM",
       "editedAt": "-",
-      "isActive": false
+      "isActive": true
     },
     {
       "id": "10",

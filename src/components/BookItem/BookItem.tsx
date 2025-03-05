@@ -1,8 +1,10 @@
 import { FC } from "react";
-import styles from "./BookItem.module.scss";
+// import styles from "./BookItem.module.scss";
 import { Book } from "../BookList/types";
-import classNames from 'classnames';
+import classNames from "classnames";
 import { bookUpdate } from "../../api-services/requests";
+import editIcon from "../../../public/icons/edit.svg";
+import deleteIcon from "../../../public/icons/delete.svg";
 
 interface BookItemProps {
   book: Book;
@@ -10,42 +12,67 @@ interface BookItemProps {
 }
 
 const BookItem: FC<BookItemProps> = ({ book, refreshPage }) => {
+  const { id, title, name, category, isbn, createdAt, editedAt, isActive } =
+    book;
 
-  const { id, title, name, category, isbn, createdAt, editedAt, isActive } = book;
-
-  const handleActivateClick: React.MouseEventHandler<HTMLButtonElement> = async() => {
+  const handleActivateClick: React.MouseEventHandler<
+    HTMLButtonElement
+  > = async () => {
     const response = await bookUpdate(id, {
-      isActive: true
+      isActive: true,
     });
 
     if (response && response.ok) {
       refreshPage();
     }
-  }
+  };
 
-  const handleDeActivateClick: React.MouseEventHandler<HTMLButtonElement> = async() => {
+  const handleDeActivateClick: React.MouseEventHandler<
+    HTMLButtonElement
+  > = async () => {
     const response = await bookUpdate(id, {
-      isActive: false
+      isActive: false,
     });
 
     if (response && response.ok) {
       refreshPage();
     }
-  }
+  };
 
   return (
-    <tr className={classNames({[styles.deactivated]: !isActive})}>
-      <td className={styles.title}>{title}</td>
-      <td className={styles.name}>{name}</td>
-      <td className={styles.category}>{category}</td>
-      <td className={styles.isbn}>{isbn}</td>
-      <td className={styles.createdAt}>{createdAt}</td>
-      <td className={styles.editedAt}>{editedAt}</td>
-      <td className={styles.actions}>
-        {isActive && <button className={styles.edit_button}>Edit</button>}
-        {!isActive && <button className={styles.delete_button}>Delete</button>}
-        {isActive && <button onClick={handleDeActivateClick} className={styles.deactivate_button}>Deactivate</button>}
-        {!isActive && <button onClick={handleActivateClick} className={styles.activate_button}>Activate</button>}
+    <tr
+      className={classNames("has-text-centered", {
+        "has-background-warning-85": !isActive,
+      })}
+    >
+      <td style={{ verticalAlign: "middle" }}>{title}</td>
+      <td style={{ verticalAlign: "middle" }}>{name}</td>
+      <td style={{ verticalAlign: "middle" }}>{category}</td>
+      <td style={{ verticalAlign: "middle" }}>{isbn}</td>
+      <td style={{ verticalAlign: "middle" }}>{createdAt}</td>
+      <td style={{ verticalAlign: "middle" }}>{editedAt}</td>
+      <td
+        className="is-flex is-flex-wrap-nowrap is-align-items-center is-justify-content-flex-end"
+        style={{ verticalAlign: "middle" }}
+      >
+        {isActive && (
+          <button
+            onClick={handleDeActivateClick}
+            className="button is-small is-danger is-uppercase"
+          >
+            Deactivate
+          </button>
+        )}
+        {!isActive && (
+          <button
+            onClick={handleActivateClick}
+            className="button is-small is-success is-uppercase"
+          >
+            Re-Activate
+          </button>
+        )}
+        {isActive && <img className="button is-small" src={editIcon} />}
+        {!isActive && <img className="button is-small" src={deleteIcon} />}
       </td>
     </tr>
   );
