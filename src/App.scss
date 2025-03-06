@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap");
-@import 'bulma/css/bulma.css';
+@import "bulma/css/bulma.css";
 
 * {
   margin: 0;
@@ -8,34 +8,65 @@
 }
 
 body {
+  min-height: 100vh;
   display: flex;
   justify-content: center;
   font-family: "Roboto", serif;
   font-size: 13px;
   font-weight: 400;
   font-style: normal;
-  color: rgb(97, 93, 93);
-}
 
-main {
-  width: 100vw;
-  min-height: 100vh;
-  display: flex;
-  position: relative;
-  flex-direction: column;
-
-  &::after {
-    content: "";
-    display: block;
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    z-index: -1;
-    background-image: url("../public/images/books.webp");
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    filter: blur(7px);
+  td {
+    width: 160px;
+    min-width: 110px;
   }
 }
 
+.light {
+  color: #615d5d;
+}
+
+.dark {
+  color: #ddcdcd;
+}
+
+#table-container {
+  max-width: 93vw;
+  overflow: hidden;
+  overflow-x: auto;
+  border: 1px solid rgba(97, 93, 93, 0.2);
+  box-sizing: content-box;
+
+}
+
+.button-edit,
+.button-delete {
+  width: 29px;
+  height: 29px;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin-left: 5px;
+  
+}
+
+.button-edit {
+  background-image: url('../public/icons/edit.svg');
+  
+}
+
+.button-delete {
+  background-image: url('../public/icons/delete.svg');
+}
+
+.actions-cell {
+  white-space: nowrap;
+}
+
+.not-visible {
+  visibility: hidden;
+}
+
+.form-container {
+  width: 90vw;
+  max-width: 500px;
+}

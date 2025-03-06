@@ -7,8 +7,8 @@
       "category": "Dystopian",
       "isbn": "978-0451524935",
       "createdAt": "4 March 2025, 8:35PM",
-      "editedAt": "-",
-      "isActive": false
+      "editedAt": "6 March 2025, 22:58PM",
+      "isActive": true
     },
     {
       "id": "2",
@@ -18,7 +18,7 @@
       "isbn": "978-0060850524",
       "createdAt": "4 March 2025, 8:35PM",
       "editedAt": "-",
-      "isActive": false
+      "isActive": true
     },
     {
       "id": "3",
@@ -38,17 +38,17 @@
       "isbn": "978-0385490818",
       "createdAt": "4 March 2025, 8:35PM",
       "editedAt": "-",
-      "isActive": false
+      "isActive": true
     },
     {
       "id": "5",
-      "title": "To Kill a Mockingbird",
+      "title": "To Kill a Mockingbird 1",
       "name": "Harper Lee",
       "category": "Classic",
       "isbn": "978-0061120084",
       "createdAt": "4 March 2025, 8:35PM",
-      "editedAt": "-",
-      "isActive": false
+      "editedAt": "6 March 2025, 20:33PM",
+      "isActive": true
     },
     {
       "id": "6",
@@ -68,7 +68,7 @@
       "isbn": "978-1503290563",
       "createdAt": "4 March 2025, 8:35PM",
       "editedAt": "-",
-      "isActive": false
+      "isActive": true
     },
     {
       "id": "8",
@@ -200,5 +200,69 @@
       "editedAt": "-",
       "isActive": true
     }
+  ],
+  "categories": [
+    "Fiction",
+    "Non-fiction",
+    "Science Fiction",
+    "Fantasy",
+    "Mystery",
+    "Thriller",
+    "Romance",
+    "Historical Fiction",
+    "Adventure",
+    "Young Adult",
+    "Children's Books",
+    "Graphic Novels",
+    "Poetry",
+    "Drama",
+    "Biography",
+    "Autobiography",
+    "Memoir",
+    "Self-help",
+    "Psychology",
+    "Philosophy",
+    "Sociology",
+    "Religion & Spirituality",
+    "Politics",
+    "Economics",
+    "Science",
+    "Technology",
+    "Health & Wellness",
+    "Cooking",
+    "Travel",
+    "Art & Photography",
+    "Music",
+    "Sports",
+    "Hobbies & Crafts",
+    "Business & Finance",
+    "Law",
+    "Education",
+    "Reference",
+    "Humor",
+    "Classic",
+    "Literary Fiction",
+    "True Crime",
+    "Paranormal",
+    "Horror",
+    "Science & Nature",
+    "Children's Non-fiction",
+    "Social Issues",
+    "Environmental",
+    "Military",
+    "Crime",
+    "Health",
+    "Psychological Thriller",
+    "Urban Fiction",
+    "Dystopian",
+    "Fairy Tales & Folklore",
+    "Espionage",
+    "Western",
+    "Graphic Novels & Comics",
+    "Anthology",
+    "Short Stories",
+    "Drama & Performance",
+    "Textbooks",
+    "Political Science"
   ]
 }

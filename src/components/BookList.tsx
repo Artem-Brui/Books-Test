@@ -1,28 +1,31 @@
 import { Book, BookForHeading } from "./types";
-import BookItem from "../BookItem/BookItem";
-// import styles from "./Booklist.module.scss";
-import { headings } from "./service";
+import BookItem from "./BookItem";
+import { tableHeadings } from "./service.ts";
 import { FC } from "react";
 
 type Props = {
   booksList: Book[];
   reloadPage: () => void;
+  updateBook: (book: Book) => void;
 };
 
-const BookList: FC<Props> = ({ booksList, reloadPage }) => {
+const BookList: FC<Props> = ({ booksList, reloadPage, updateBook }) => {
   return (
-    <div className="table-container is-size-6 is-size-7-mobile">
-      <table className="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+    <div
+      className="table-container is-size-6 is-size-7-mobile"
+      id="table-container"
+    >
+      <table className="table is-bordered is-striped is-narrow is-hoverable is-fullwidth ">
         <thead>
           <tr>
-            {Object.keys(headings).map((head) => {
+            {Object.keys(tableHeadings).map((head) => {
               return (
                 <td
                   key={head}
                   className="has-text-centered has-text-weight-bold is-uppercase"
                   style={{ verticalAlign: "middle" }}
                 >
-                  {headings[head as keyof BookForHeading]}
+                  {tableHeadings[head as keyof BookForHeading]}
                 </td>
               );
             })}
@@ -33,9 +36,10 @@ const BookList: FC<Props> = ({ booksList, reloadPage }) => {
           {booksList.map((bookData) => {
             return (
               <BookItem
-                key={bookData.isbn}
+                key={bookData.id}
                 book={bookData}
                 refreshPage={reloadPage}
+                updateBook={updateBook}
               />
             );
           })}
