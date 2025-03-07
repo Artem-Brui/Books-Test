@@ -1,7 +1,5 @@
 # Books - a test task
 
-A brief description of your project: what it does, its purpose, and goals.
-
 ## About
 
 The project was created using TypeScript and React. Also, the following packages were additionally used:
