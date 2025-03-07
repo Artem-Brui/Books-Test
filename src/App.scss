@@ -50,12 +50,12 @@ body {
 }
 
 .button-edit {
-  background-image: url('../public/assets/icons/edit.svg');
+  background-image: url('/assets/icons/edit.svg');
   
 }
 
 .button-delete {
-  background-image: url('../public/assets/icons/delete.svg');
+  background-image: url('/assets/icons/delete.svg');
 }
 
 .actions-cell {
@@ -89,7 +89,7 @@ body {
 
 .footer {
   height: 280px;
-  background-image: url('../public/assets/images/github.webp');
+  background-image: url('/assets/images/github.webp');
   background-repeat: no-repeat;
   background-position: 50% 80%;
   background-size: 580px;

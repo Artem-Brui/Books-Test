@@ -19,7 +19,7 @@ const Dashboard: FC<DashboardProps> = ({
 }) => {
   const [activeFilter, setActiveFilter] = useState("active");
   const [filteredList, setFilteredList] = useState<Book[]>([]);
-  const [_newRender, setNewRender] = useState(false);
+  const [newRender, setNewRender] = useState(false);
   const [isMessageVisible, setIsMessageVisible] = useState(false);
 
   let filterParams = "";
@@ -47,7 +47,7 @@ const Dashboard: FC<DashboardProps> = ({
     };
 
     loadBooks();
-  }, [filterParams]);
+  }, [filterParams, newRender]);
 
   const showMessageDelete = () => {
     setIsMessageVisible(true);
@@ -56,8 +56,6 @@ const Dashboard: FC<DashboardProps> = ({
       setIsMessageVisible(false);
     }, 2000);
   };
-
-  console.log("RENDER DASHBOARD");
 
   return (
     <div className="dashboard-container mt-6">
@@ -71,7 +69,7 @@ const Dashboard: FC<DashboardProps> = ({
 
       <BookList
         booksList={filteredList}
-        reloadPage={() => setNewRender((prev) => !prev)}
+        reloadPage={() => setNewRender((prev)=>!prev)}
         updateBook={updateOperation}
         deleteMessage={showMessageDelete}
       />

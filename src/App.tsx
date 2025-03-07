@@ -1,5 +1,5 @@
 import Dashboard from "./components/Dashboard";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { HashRouter, Route, Routes } from "react-router-dom";
 import "./App.scss";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import BookForm from "./components/BookForm";
@@ -24,10 +24,8 @@ function App() {
     setBookForUpdate(null);
   }, []);
 
-  console.log('RENDER APP');
-
   return (
-    <BrowserRouter basename="/">
+    <HashRouter>
       <Routes>
         <Route
           path="/"
@@ -51,7 +49,7 @@ function App() {
           }
         />
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 
