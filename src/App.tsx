@@ -27,7 +27,7 @@ function App() {
   console.log('RENDER APP');
 
   return (
-    <BrowserRouter basename="/Books-Test">
+    <BrowserRouter basename="/">
       <Routes>
         <Route
           path="/"
