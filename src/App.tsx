@@ -3,9 +3,8 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.scss";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import BookForm from "./components/BookForm";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useState } from "react";
 import { Book } from "./components/types";
-import { booksGET } from "./api-services/requests";
 
 export type FormOperation = "create" | "update";
 export type bookForUpdateType = Book | null;
@@ -14,14 +13,6 @@ function App() {
   const [formOperation, setFormOperation] = useState<FormOperation>("create");
   const [bookForUpdate, setBookForUpdate] = useState<bookForUpdateType>(null);
   const [booksList, setBooksList] = useState<Book[] | []>([]);
-
-  useEffect(() => {
-    const loadBooks = async () => {
-      setBooksList(await booksGET(""));
-    };
-
-    loadBooks();
-  }, []);
 
   const switchOperationToUpdate = useCallback((book: bookForUpdateType) => {
     setFormOperation("update");
@@ -33,6 +24,8 @@ function App() {
     setBookForUpdate(null);
   }, []);
 
+  console.log('RENDER APP');
+
   return (
     <BrowserRouter>
       <Routes>
@@ -42,6 +35,7 @@ function App() {
             <Dashboard
               updateOperation={switchOperationToUpdate}
               fullBooksList={booksList}
+              getBooksList={(books) => setBooksList(books)}
             />
           }
         />

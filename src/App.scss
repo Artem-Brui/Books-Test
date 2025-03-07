@@ -82,3 +82,39 @@ body {
   padding: 0;
   line-height: 40px;
 }
+
+.dashboard-container {
+  min-height: 100vh;
+}
+
+.footer {
+  height: 280px;
+  background-image: url('../public/images/github.webp');
+  background-repeat: no-repeat;
+  background-position: 50% 80%;
+  background-size: 580px;
+  padding-top: 10px;
+  cursor: pointer;
+  position: sticky;
+  top: calc(100vh - 280px);
+
+  h2 {
+    font-size: 2rem;
+    text-align: center;
+  }
+}
+
+@media (max-width: 650px) {
+  .footer {
+    height: 160px;
+    background-size: 280px;
+    padding-top: 5px;
+  
+    h2 {
+      font-size: 1.6rem;
+      text-align: center;
+    }
+  }
+}
+
+

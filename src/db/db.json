@@ -27,7 +27,7 @@
       "category": "Dystopian",
       "isbn": "978-1451673319",
       "createdAt": "4 March 2025, 8:35PM",
-      "editedAt": "7 March 2025, 00:58AM",
+      "editedAt": "7 March 2025, 10:36AM",
       "isActive": true
     },
     {
@@ -47,7 +47,7 @@
       "category": "Classic",
       "isbn": "978-0061120084",
       "createdAt": "4 March 2025, 8:35PM",
-      "editedAt": "7 March 2025, 00:45AM",
+      "editedAt": "7 March 2025, 10:36AM",
       "isActive": true
     },
     {
@@ -449,6 +449,14 @@
     {
       "id": "62",
       "name": "Political Science"
+    },
+    {
+      "id": "63",
+      "name": "Coming-of-Age"
+    },
+    {
+      "id": "64",
+      "name": "Psychological Fiction"
     }
   ]
 }
