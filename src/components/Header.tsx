@@ -5,7 +5,7 @@ import NavigateButton from "./NavigateButton";
 
 type HeaderProps = {
   dbList: Book[];
-  allBooks: Book[];
+  allBooks: Book[] | [];
   filterValue: string;
   updateFilter: (filter: string) => void;
 };

@@ -7,9 +7,10 @@ type Props = {
   booksList: Book[];
   reloadPage: () => void;
   updateBook: (book: Book) => void;
+  deleteMessage: () => void;
 };
 
-const BookList: FC<Props> = ({ booksList, reloadPage, updateBook }) => {
+const BookList: FC<Props> = ({ booksList, reloadPage, updateBook, deleteMessage }) => {
   return (
     <div
       className="table-container is-size-6 is-size-7-mobile"
@@ -40,6 +41,7 @@ const BookList: FC<Props> = ({ booksList, reloadPage, updateBook }) => {
                 book={bookData}
                 refreshPage={reloadPage}
                 updateBook={updateBook}
+                deleteMessage={deleteMessage}
               />
             );
           })}

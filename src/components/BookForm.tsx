@@ -11,20 +11,17 @@ import {
 import React, { FC, useCallback, useEffect, useRef, useState } from "react";
 import classNames from "classnames";
 import { useNavigate } from "react-router-dom";
-import {
-  bookAdd,
-  bookUpdate,
-} from "../api-services/requests";
-import { Book, updatedBook } from "./types";
+import { bookAdd, bookUpdate, categoriesGET } from "../api-services/requests";
+import { Book, Category, updatedBook } from "./types";
 import { FormOperation } from "../App";
 import NavigateButton from "./NavigateButton";
+import Message from "./Message";
 
 type FormProps = {
   operation: FormOperation;
   bookForUpdate?: Book | null;
   reset: () => void;
-  fullBooksList: Book[];
-  categories: string[];
+  fullBooksList: Book[] | null;
 };
 
 type CheckerType = {
@@ -35,12 +32,14 @@ type CheckerType = {
 };
 
 const BookForm: FC<FormProps> = React.memo(
-  ({ operation, bookForUpdate, reset, fullBooksList, categories }) => {
+  ({ operation, bookForUpdate, reset, fullBooksList }) => {
     const navigate = useNavigate();
 
     const isOperationUpdate = operation === "update";
 
     const [isAbleToSubmit, setIsAbleToSubmit] = useState(false);
+    const [isMessageVisible, setIsMessageVisible] = useState(false);
+    const [categories, setCategories] = useState<Category[] | []>([]);
 
     const [title, setTitle] = useState(bookForUpdate?.title || "");
     const [author, setAuthor] = useState(bookForUpdate?.name || "");
@@ -64,18 +63,30 @@ const BookForm: FC<FormProps> = React.memo(
     const isFilledSuccessful = useRef(isAbleToSubmit);
 
     useEffect(() => {
+      const loadCategories = async () => {
+        setCategories(await categoriesGET());
+      };
+
+      loadCategories();
+    }, []);
+    
+    useEffect(() => {
       const submitForm = async () => {
         if (!isOperationUpdate) {
           await bookAdd(requestBodyBuilder(operation));
         } else if (bookForUpdate) {
           await bookUpdate(bookForUpdate.id, requestBodyBuilder(operation));
         }
-        reset();
-        navigate("/");
       };
-      
+
       if (isFilledSuccessful.current) {
         submitForm();
+        setIsMessageVisible(true);
+        setTimeout(() => {
+          setIsMessageVisible(false);
+          reset();
+          navigate("/");
+        }, 1500);
       }
     }, [isAbleToSubmit]);
 
@@ -151,12 +162,14 @@ const BookForm: FC<FormProps> = React.memo(
         const isPatternOk = regexPattern.test(input);
 
         if (isCategotyType) {
-          const isCategoryExist = categories.some((cat) => cat === input);
+          const isCategoryExist = categories.some(
+            (cat) => cat.name === input
+          );
 
           if (!isCategoryExist) {
-            setIsError(prevError => ({ ...prevError, category: true }));
+            setIsError((prevError) => ({ ...prevError, category: true }));
           } else {
-            setIsSuccess(prevSuccess => ({ ...prevSuccess, category: true }));
+            setIsSuccess((prevSuccess) => ({ ...prevSuccess, category: true }));
           }
 
           return isNotEmpty && isPatternOk && isCategoryExist;
@@ -174,8 +187,11 @@ const BookForm: FC<FormProps> = React.memo(
 
           const isTitleSuccess = validateInput(newTitle, "title");
 
-          setIsError(prevError => ({ ...prevError, title: !isTitleSuccess }));
-          setIsSuccess(prevSuccess => ({ ...prevSuccess, title: isTitleSuccess }));
+          setIsError((prevError) => ({ ...prevError, title: !isTitleSuccess }));
+          setIsSuccess((prevSuccess) => ({
+            ...prevSuccess,
+            title: isTitleSuccess,
+          }));
           setTitle(newTitle);
         },
         [validateInput]
@@ -188,8 +204,14 @@ const BookForm: FC<FormProps> = React.memo(
 
           const isAuthorSuccess = validateInput(newAuthor, "author");
 
-          setIsError(prevError => ({ ...prevError, author: !isAuthorSuccess }));
-          setIsSuccess(prevSuccess => ({ ...prevSuccess, author: isAuthorSuccess }));
+          setIsError((prevError) => ({
+            ...prevError,
+            author: !isAuthorSuccess,
+          }));
+          setIsSuccess((prevSuccess) => ({
+            ...prevSuccess,
+            author: isAuthorSuccess,
+          }));
           setAuthor(newAuthor);
         },
         [validateInput]
@@ -202,8 +224,11 @@ const BookForm: FC<FormProps> = React.memo(
 
           const isISBNSuccess = validateInput(newISBN, "isbn");
 
-          setIsError(prevError => ({ ...prevError, isbn: !isISBNSuccess }));
-          setIsSuccess(prevSuccess => ({ ...prevSuccess, isbn: isISBNSuccess }));
+          setIsError((prevError) => ({ ...prevError, isbn: !isISBNSuccess }));
+          setIsSuccess((prevSuccess) => ({
+            ...prevSuccess,
+            isbn: isISBNSuccess,
+          }));
           setISBN(newISBN);
         },
         [validateInput]
@@ -216,8 +241,14 @@ const BookForm: FC<FormProps> = React.memo(
 
           const isCategorySuccess = validateInput(newCategory, "category");
 
-          setIsError(prevError => ({ ...prevError, category: !isCategorySuccess }));
-          setIsSuccess(prevSuccess => ({ ...prevSuccess, category: isCategorySuccess }));
+          setIsError((prevError) => ({
+            ...prevError,
+            category: !isCategorySuccess,
+          }));
+          setIsSuccess((prevSuccess) => ({
+            ...prevSuccess,
+            category: isCategorySuccess,
+          }));
           setCategory(newCategory);
         },
         [validateInput]
@@ -236,11 +267,8 @@ const BookForm: FC<FormProps> = React.memo(
       });
 
       isFilledSuccessful.current = isFilledRight;
-      setIsAbleToSubmit(!isAbleToSubmit)
+      setIsAbleToSubmit(!isAbleToSubmit);
     };
-
-    console.log('RENDER');
-    
 
     return (
       <div
@@ -250,6 +278,7 @@ const BookForm: FC<FormProps> = React.memo(
       form-container
       "
       >
+        {isMessageVisible && <Message type={operation} />}
         <NavigateButton buttonText="Dashboard" direction="/" reset={reset} />
         <PageHeading
           addClasses="is-align-self-center"
@@ -368,7 +397,7 @@ const BookForm: FC<FormProps> = React.memo(
 
             <datalist id="autocomplete-suggestions">
               {categories.map((cat) => {
-                return <option key={cat} value={cat} />;
+                return <option key={cat.id} value={cat.name} />;
               })}
             </datalist>
           </div>

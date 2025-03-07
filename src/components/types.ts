@@ -10,6 +10,11 @@ export interface Book {
   actions?: HTMLButtonElement | string | undefined;
 }
 
+export interface Category {
+  id: string;
+  name: string;
+}
+
 export type updatedBook = Omit<Book, 'id' | 'isActive' | 'createdAt'>
 
 export type BookForHeading = Omit<Book, 'id' | 'isActive'>;

@@ -7,9 +7,10 @@ interface BookItemProps {
   book: Book;
   refreshPage: () => void;
   updateBook: (book: Book) => void;
+  deleteMessage: () => void;
 }
 
-const BookItem: FC<BookItemProps> = ({ book, refreshPage, updateBook }) => {
+const BookItem: FC<BookItemProps> = ({ book, refreshPage, updateBook, deleteMessage }) => {
   const navigate = useNavigate()
   const { id, title, name, category, isbn, createdAt, editedAt, isActive } =
     book;
@@ -47,9 +48,10 @@ const BookItem: FC<BookItemProps> = ({ book, refreshPage, updateBook }) => {
 
   const hadleDeleteClick: React.MouseEventHandler<HTMLButtonElement> = useCallback((): void => {
     bookDelete(book.id);
+    deleteMessage();
     refreshPage();
   },
-    [refreshPage, book]
+    [refreshPage, book, deleteMessage]
   ) 
 
   return (

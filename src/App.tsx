@@ -3,9 +3,9 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.scss";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import BookForm from "./components/BookForm";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { Book } from "./components/types";
-import { booksGET, categoriesGET } from "./api-services/requests";
+import { booksGET } from "./api-services/requests";
 
 export type FormOperation = "create" | "update";
 export type bookForUpdateType = Book | null;
@@ -13,24 +13,20 @@ export type bookForUpdateType = Book | null;
 function App() {
   const [formOperation, setFormOperation] = useState<FormOperation>("create");
   const [bookForUpdate, setBookForUpdate] = useState<bookForUpdateType>(null);
-
-  const booksFullList = useRef([]);
-  const categoriesList = useRef([]);
+  const [booksList, setBooksList] = useState<Book[] | []>([]);
 
   useEffect(() => {
-      const loadBooks = async () => {
-        booksFullList.current = await booksGET("");
-        categoriesList.current = await categoriesGET();
-      };
-  
-      loadBooks();
+    const loadBooks = async () => {
+      setBooksList(await booksGET(""));
+    };
+
+    loadBooks();
   }, []);
-  
+
   const switchOperationToUpdate = useCallback((book: bookForUpdateType) => {
     setFormOperation("update");
     setBookForUpdate(book);
   }, []);
-  
 
   const resetOperation = useCallback(() => {
     setFormOperation("create");
@@ -42,7 +38,12 @@ function App() {
       <Routes>
         <Route
           path="/"
-          element={<Dashboard updateOperation={switchOperationToUpdate} fullBooksList={booksFullList.current} />}
+          element={
+            <Dashboard
+              updateOperation={switchOperationToUpdate}
+              fullBooksList={booksList}
+            />
+          }
         />
         <Route
           path="/form"
@@ -51,8 +52,7 @@ function App() {
               bookForUpdate={bookForUpdate}
               reset={resetOperation}
               operation={formOperation}
-              fullBooksList={booksFullList.current}
-              categories={categoriesList.current}
+              fullBooksList={booksList}
             />
           }
         />

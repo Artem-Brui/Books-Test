@@ -7,8 +7,8 @@
       "category": "Dystopian",
       "isbn": "978-0451524935",
       "createdAt": "4 March 2025, 8:35PM",
-      "editedAt": "6 March 2025, 22:58PM",
-      "isActive": true
+      "editedAt": "6 March 2025, 23:52PM",
+      "isActive": false
     },
     {
       "id": "2",
@@ -17,8 +17,8 @@
       "category": "Dystopian",
       "isbn": "978-0060850524",
       "createdAt": "4 March 2025, 8:35PM",
-      "editedAt": "-",
-      "isActive": true
+      "editedAt": "7 March 2025, 00:33AM",
+      "isActive": false
     },
     {
       "id": "3",
@@ -27,7 +27,7 @@
       "category": "Dystopian",
       "isbn": "978-1451673319",
       "createdAt": "4 March 2025, 8:35PM",
-      "editedAt": "-",
+      "editedAt": "7 March 2025, 00:58AM",
       "isActive": true
     },
     {
@@ -42,12 +42,12 @@
     },
     {
       "id": "5",
-      "title": "To Kill a Mockingbird 1",
+      "title": "To Kill a Mockingbird",
       "name": "Harper Lee",
       "category": "Classic",
       "isbn": "978-0061120084",
       "createdAt": "4 March 2025, 8:35PM",
-      "editedAt": "6 March 2025, 20:33PM",
+      "editedAt": "7 March 2025, 00:45AM",
       "isActive": true
     },
     {
@@ -202,67 +202,253 @@
     }
   ],
   "categories": [
-    "Fiction",
-    "Non-fiction",
-    "Science Fiction",
-    "Fantasy",
-    "Mystery",
-    "Thriller",
-    "Romance",
-    "Historical Fiction",
-    "Adventure",
-    "Young Adult",
-    "Children's Books",
-    "Graphic Novels",
-    "Poetry",
-    "Drama",
-    "Biography",
-    "Autobiography",
-    "Memoir",
-    "Self-help",
-    "Psychology",
-    "Philosophy",
-    "Sociology",
-    "Religion & Spirituality",
-    "Politics",
-    "Economics",
-    "Science",
-    "Technology",
-    "Health & Wellness",
-    "Cooking",
-    "Travel",
-    "Art & Photography",
-    "Music",
-    "Sports",
-    "Hobbies & Crafts",
-    "Business & Finance",
-    "Law",
-    "Education",
-    "Reference",
-    "Humor",
-    "Classic",
-    "Literary Fiction",
-    "True Crime",
-    "Paranormal",
-    "Horror",
-    "Science & Nature",
-    "Children's Non-fiction",
-    "Social Issues",
-    "Environmental",
-    "Military",
-    "Crime",
-    "Health",
-    "Psychological Thriller",
-    "Urban Fiction",
-    "Dystopian",
-    "Fairy Tales & Folklore",
-    "Espionage",
-    "Western",
-    "Graphic Novels & Comics",
-    "Anthology",
-    "Short Stories",
-    "Drama & Performance",
-    "Textbooks",
-    "Political Science"
+    {
+      "id": "1",
+      "name": "Fiction"
+    },
+    {
+      "id": "2",
+      "name": "Non-fiction"
+    },
+    {
+      "id": "3",
+      "name": "Science Fiction"
+    },
+    {
+      "id": "4",
+      "name": "Fantasy"
+    },
+    {
+      "id": "5",
+      "name": "Mystery"
+    },
+    {
+      "id": "6",
+      "name": "Thriller"
+    },
+    {
+      "id": "7",
+      "name": "Romance"
+    },
+    {
+      "id": "8",
+      "name": "Historical Fiction"
+    },
+    {
+      "id": "9",
+      "name": "Adventure"
+    },
+    {
+      "id": "10",
+      "name": "Young Adult"
+    },
+    {
+      "id": "11",
+      "name": "Children's Books"
+    },
+    {
+      "id": "12",
+      "name": "Graphic Novels"
+    },
+    {
+      "id": "13",
+      "name": "Poetry"
+    },
+    {
+      "id": "14",
+      "name": "Drama"
+    },
+    {
+      "id": "15",
+      "name": "Biography"
+    },
+    {
+      "id": "16",
+      "name": "Autobiography"
+    },
+    {
+      "id": "17",
+      "name": "Memoir"
+    },
+    {
+      "id": "18",
+      "name": "Self-help"
+    },
+    {
+      "id": "19",
+      "name": "Psychology"
+    },
+    {
+      "id": "20",
+      "name": "Philosophy"
+    },
+    {
+      "id": "21",
+      "name": "Sociology"
+    },
+    {
+      "id": "22",
+      "name": "Religion & Spirituality"
+    },
+    {
+      "id": "23",
+      "name": "Politics"
+    },
+    {
+      "id": "24",
+      "name": "Economics"
+    },
+    {
+      "id": "25",
+      "name": "Science"
+    },
+    {
+      "id": "26",
+      "name": "Technology"
+    },
+    {
+      "id": "27",
+      "name": "Health & Wellness"
+    },
+    {
+      "id": "28",
+      "name": "Cooking"
+    },
+    {
+      "id": "29",
+      "name": "Travel"
+    },
+    {
+      "id": "30",
+      "name": "Art & Photography"
+    },
+    {
+      "id": "31",
+      "name": "Music"
+    },
+    {
+      "id": "32",
+      "name": "Sports"
+    },
+    {
+      "id": "33",
+      "name": "Hobbies & Crafts"
+    },
+    {
+      "id": "34",
+      "name": "Business & Finance"
+    },
+    {
+      "id": "35",
+      "name": "Law"
+    },
+    {
+      "id": "36",
+      "name": "Education"
+    },
+    {
+      "id": "37",
+      "name": "Reference"
+    },
+    {
+      "id": "38",
+      "name": "Humor"
+    },
+    {
+      "id": "39",
+      "name": "Classic"
+    },
+    {
+      "id": "40",
+      "name": "Literary Fiction"
+    },
+    {
+      "id": "41",
+      "name": "True Crime"
+    },
+    {
+      "id": "42",
+      "name": "Paranormal"
+    },
+    {
+      "id": "43",
+      "name": "Horror"
+    },
+    {
+      "id": "44",
+      "name": "Science & Nature"
+    },
+    {
+      "id": "45",
+      "name": "Children's Non-fiction"
+    },
+    {
+      "id": "46",
+      "name": "Social Issues"
+    },
+    {
+      "id": "47",
+      "name": "Environmental"
+    },
+    {
+      "id": "48",
+      "name": "Military"
+    },
+    {
+      "id": "49",
+      "name": "Crime"
+    },
+    {
+      "id": "50",
+      "name": "Health"
+    },
+    {
+      "id": "51",
+      "name": "Psychological Thriller"
+    },
+    {
+      "id": "52",
+      "name": "Urban Fiction"
+    },
+    {
+      "id": "53",
+      "name": "Dystopian"
+    },
+    {
+      "id": "54",
+      "name": "Fairy Tales & Folklore"
+    },
+    {
+      "id": "55",
+      "name": "Espionage"
+    },
+    {
+      "id": "56",
+      "name": "Western"
+    },
+    {
+      "id": "57",
+      "name": "Graphic Novels & Comics"
+    },
+    {
+      "id": "58",
+      "name": "Anthology"
+    },
+    {
+      "id": "59",
+      "name": "Short Stories"
+    },
+    {
+      "id": "60",
+      "name": "Drama & Performance"
+    },
+    {
+      "id": "61",
+      "name": "Textbooks"
+    },
+    {
+      "id": "62",
+      "name": "Political Science"
+    }
   ]
 }
